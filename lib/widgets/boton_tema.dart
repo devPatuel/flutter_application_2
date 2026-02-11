@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/core/colores.dart';
 
+/// Botón que despliega un menú emergente para seleccionar el color principal del tema.
 class BotonColor extends StatelessWidget {
   const BotonColor({
     super.key,
@@ -8,7 +9,10 @@ class BotonColor extends StatelessWidget {
     required this.colorElegido,
   });
 
+  /// Callback que recibe el índice del color seleccionado.
   final void Function(int) cambiarColor;
+
+  /// El color actualmente seleccionado.
   final Colores colorElegido;
 
   @override

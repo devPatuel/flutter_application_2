@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-class SinTareas extends StatelessWidget{
+
+/// Widget que se muestra cuando la lista de tareas está vacía.
+class SinTareas extends StatelessWidget {
   const SinTareas({super.key});
 
   @override
@@ -8,21 +10,21 @@ class SinTareas extends StatelessWidget{
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-           Icon(
-              Icons.task_alt,
-              size: 48,
-              color: Theme.of(context).colorScheme.secondary,
+          Icon(
+            Icons.task_alt,
+            size: 48,
+            color: Theme.of(context).colorScheme.secondary,
+          ),
+          const SizedBox(height: 16),
+          Text(
+            'No hay tareas',
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              color: Theme.of(context).colorScheme.tertiary,
+              fontSize: 18,
             ),
-              const SizedBox(height: 16),
-              Text(
-                'No hay tareas',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Theme.of(context).colorScheme.tertiary,
-                fontSize:18,
-              ),
-          )
-        ],   
-      )
+          ),
+        ],
+      ),
     );
   }
-} 
+}

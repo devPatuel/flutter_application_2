@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Widget que muestra la imagen del logotipo de la aplicación.
 class Logo extends StatelessWidget {
   const Logo({super.key});
 

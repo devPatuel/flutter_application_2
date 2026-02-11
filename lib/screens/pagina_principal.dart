@@ -10,16 +10,26 @@ import 'package:flutter_application_2/widgets/tarjeta_tarea.dart';
 import 'package:flutter_application_2/routes/rutas.dart';
 import 'package:flutter_application_2/screens/pagina_agregar_tarea.dart';
 
+/// Pantalla principal de la aplicación.
+///
+/// Muestra la lista de tareas, filtros y opciones de configuración global.
 class PaginaPrincipal extends StatefulWidget {
+  /// Función para alternar el modo oscuro/claro.
   final Function(bool) alCambiarModo;
+
+  /// Función para cambiar el color semilla del tema.
   final Function(int) alCambiarColor;
+
+  /// El color actualmente seleccionado.
   final Colores colorActual;
 
+  /// Crea la pantalla principal con los callbacks necesarios para el estado global.
   const PaginaPrincipal({
     super.key,
     required this.alCambiarModo,
     required this.alCambiarColor,
-    required this.colorActual,});
+    required this.colorActual,
+  });
 
   @override
   State<PaginaPrincipal> createState() => _PaginaPrincipalState();
@@ -156,8 +166,6 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
     );
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -167,17 +175,19 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Theme.of(context).colorScheme.onPrimary,
         elevation: 0,
-         actions: [
-            BotonModo(cambiarModo: widget.alCambiarModo),
-            BotonColor(cambiarColor: widget.alCambiarColor, colorElegido: widget.colorActual),
-
-          ],
+        actions: [
+          BotonModo(cambiarModo: widget.alCambiarModo),
+          BotonColor(
+            cambiarColor: widget.alCambiarColor,
+            colorElegido: widget.colorActual,
+          ),
+        ],
       ),
       body: _tareas.isEmpty
           ? const SinTareas()
           : Column(
               children: [
-                _construirFiltros(), 
+                _construirFiltros(),
                 Expanded(
                   child: _tareasFiltradas.isEmpty
                       ? const Center(
@@ -191,8 +201,7 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
                             final tarea = _tareasFiltradas[index];
                             return Dismissible(
                               key: ObjectKey(tarea),
-                              direction: DismissDirection
-                                  .endToStart,
+                              direction: DismissDirection.endToStart,
                               background: Container(
                                 color: Theme.of(context).colorScheme.error,
                                 alignment: Alignment.centerRight,

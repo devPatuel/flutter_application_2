@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/models/tarea.dart';
 
+/// Componente visual que representa una tarjeta con los detalles de una [Tarea].
 class TarjetaTarea extends StatelessWidget {
   const TarjetaTarea({
     super.key,
@@ -10,9 +11,16 @@ class TarjetaTarea extends StatelessWidget {
     required this.onEditar,
   });
 
+  /// La tarea a visualizar.
   final Tarea tarea;
+
+  /// Callback ejecutado al solicitar la eliminación de la tarea.
   final VoidCallback onEliminar;
+
+  /// Callback ejecutado al cambiar el estado de completado de la tarea.
   final VoidCallback onCambiarEstado;
+
+  /// Callback ejecutado al solicitar la edición de la tarea.
   final VoidCallback onEditar;
 
   @override
@@ -28,8 +36,7 @@ class TarjetaTarea extends StatelessWidget {
           duration: Duration(milliseconds: 250),
           child: Checkbox(
             key: ValueKey<bool>(tarea.estaTerminada),
-            value: tarea
-                .estaTerminada,
+            value: tarea.estaTerminada,
             onChanged: (_) => onCambiarEstado(),
             activeColor: Theme.of(context).colorScheme.secondary,
             checkColor: Theme.of(context).colorScheme.onSurfaceVariant,
@@ -54,9 +61,9 @@ class TarjetaTarea extends StatelessWidget {
                   decoration: tarea.estaTerminada
                       ? TextDecoration.lineThrough
                       : null,
-                  color: tarea.estaTerminada            
-                  ? Theme.of(context).colorScheme.inversePrimary
-                  : Theme.of(context).colorScheme.tertiary,
+                  color: tarea.estaTerminada
+                      ? Theme.of(context).colorScheme.inversePrimary
+                      : Theme.of(context).colorScheme.tertiary,
                   fontSize: 16,
                 ),
               ),
@@ -113,11 +120,17 @@ class TarjetaTarea extends StatelessWidget {
             if (!tarea.estaTerminada)
               IconButton(
                 onPressed: onEditar,
-                icon: Icon(Icons.edit, color:Theme.of(context).colorScheme.secondary),
+                icon: Icon(
+                  Icons.edit,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
               ),
             IconButton(
               onPressed: onEliminar,
-              icon: Icon(Icons.delete_forever, color: Theme.of(context).colorScheme.error),
+              icon: Icon(
+                Icons.delete_forever,
+                color: Theme.of(context).colorScheme.error,
+              ),
             ),
           ],
         ),

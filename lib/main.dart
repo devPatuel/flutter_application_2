@@ -1,4 +1,4 @@
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_application_2/core/colores.dart';
 import 'package:flutter_application_2/core/mi_tema.dart';
 import 'package:flutter_application_2/routes/rutas.dart';
@@ -7,14 +7,18 @@ import 'package:flutter_application_2/widgets/boton_tema.dart';
 
 final temaActual = ValueNotifier<Color>(Colors.blue);
 
+/// Punto de entrada de la aplicación.
 void main() {
   runApp(const MainApp());
 }
 
+/// Widget raíz de la aplicación.
+///
+/// Gestiona el estado global del tema (modo claro/oscuro y color seleccionado).
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
-@override
- State<MainApp> createState() => _MainAppState();
+  @override
+  State<MainApp> createState() => _MainAppState();
 }
 
 class _MainAppState extends State<MainApp> {
@@ -33,12 +37,12 @@ class _MainAppState extends State<MainApp> {
     });
   }
 
-    @override
-    Widget build(BuildContext context) {
-      return MaterialApp(
-        debugShowCheckedModeBanner: false,
-       themeMode: _modoTema,
-        theme: ThemeData(
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      themeMode: _modoTema,
+      theme: ThemeData(
         colorSchemeSeed: _colorElegido.color,
         useMaterial3: true,
         brightness: Brightness.light,
@@ -48,12 +52,12 @@ class _MainAppState extends State<MainApp> {
         useMaterial3: true,
         brightness: Brightness.dark,
       ),
-        initialRoute: Rutas.paginaPrincipal,
-        onGenerateRoute: (settings) => Rutas.generarRuta(
-          settings, 
-          cambiarModo,   // Pasamos la función como referencia
-          cambiarColor,  // Pasamos la función como referencia
-          _colorElegido  // Pasamos el estado actual
+      initialRoute: Rutas.paginaPrincipal,
+      onGenerateRoute: (settings) => Rutas.generarRuta(
+        settings,
+        cambiarModo, // Pasamos la función como referencia
+        cambiarColor, // Pasamos la función como referencia
+        _colorElegido, // Pasamos el estado actual
       ),
     );
   }

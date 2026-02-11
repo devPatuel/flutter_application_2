@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2/models/tarea.dart';
 import 'package:flutter_application_2/widgets/logo.dart';
 
+/// Pantalla que permite crear una nueva tarea o editar una existente.
 class PaginaAgregarTarea extends StatefulWidget {
+  /// Crea una instancia de [PaginaAgregarTarea].
+  ///
+  /// Si [tareaParaEditar] se proporciona, los campos se prellenarán con sus datos.
   const PaginaAgregarTarea({super.key, this.tareaParaEditar});
 
+  /// Tarea objeto de edición. Si es `null`, se asume creación.
   final Tarea? tareaParaEditar;
 
   @override
@@ -50,13 +55,18 @@ class _PaginaAgregarTareaState extends State<PaginaAgregarTarea> {
               controller: _titulo,
               decoration: InputDecoration(
                 labelText: 'Título',
-                prefixIcon: Icon(Icons.task_alt, color: Theme.of(context).colorScheme.secondary),
+                prefixIcon: Icon(
+                  Icons.task_alt,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
                 border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
                 filled: true,
-                fillColor:Theme.of(context).colorScheme.onSurfaceVariant,
-                labelStyle: TextStyle(color: Theme.of(context).colorScheme.tertiary),
+                fillColor: Theme.of(context).colorScheme.onSurfaceVariant,
+                labelStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.tertiary,
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -64,13 +74,18 @@ class _PaginaAgregarTareaState extends State<PaginaAgregarTarea> {
               controller: _descripcion,
               decoration: InputDecoration(
                 labelText: 'Descripción',
-                prefixIcon: Icon(Icons.task_alt, color: Theme.of(context).colorScheme.secondary),
+                prefixIcon: Icon(
+                  Icons.task_alt,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
                 border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
                 filled: true,
-                fillColor:Theme.of(context).colorScheme.onSurfaceVariant,
-                labelStyle: TextStyle(color: Theme.of(context).colorScheme.tertiary),
+                fillColor: Theme.of(context).colorScheme.onSurfaceVariant,
+                labelStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.tertiary,
+                ),
               ),
               maxLines: 4,
             ),
@@ -87,8 +102,10 @@ class _PaginaAgregarTareaState extends State<PaginaAgregarTarea> {
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
                 filled: true,
-                fillColor:Theme.of(context).colorScheme.onSurfaceVariant,
-                labelStyle: TextStyle(color: Theme.of(context).colorScheme.tertiary),
+                fillColor: Theme.of(context).colorScheme.onSurfaceVariant,
+                labelStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.tertiary,
+                ),
               ),
               items: const [
                 DropdownMenuItem(
